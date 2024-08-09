@@ -9,3 +9,10 @@ it('should return the posts index component', function() {
             ->component('Posts/Index', true)
         );
 });
+
+it('passes posts to the posts.index view', function() {
+    get(route('posts.index'))
+        ->assertInertia(fn (AssertableInertia $inertia) => $inertia
+            ->has('posts')
+        );
+});
