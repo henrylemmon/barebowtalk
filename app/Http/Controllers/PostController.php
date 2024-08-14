@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -13,10 +14,21 @@ class PostController extends Controller
      */
     public function index()
     {
+        /*DB::listen(function ($query) {
+            var_dump(
+                '<pre class="p-6">',
+                $query->sql,
+                $query->bindings,
+                $query->time,
+                '</pre>',
+            );
+        });*/
+
         /*return PostResource::collection(Post::paginate());*/
 
         return inertia('Posts/Index', [
-            'posts' => PostResource::collection(Post::paginate())
+            /*'post' => PostResource::make(Post::first()),*/
+            'posts' => PostResource::collection(Post::latest()->latest('id')->/*with('user')->*/paginate())
         ]);
     }
 
