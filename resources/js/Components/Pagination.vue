@@ -42,6 +42,4 @@ const props = defineProps([
 
 const filteredLinks = props.meta.links.filter((link) => link.label.length < 10);
 
-console.log(filteredLinks);
-
 </script>
