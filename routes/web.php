@@ -14,7 +14,7 @@ use Inertia\Inertia;
     ]);
 });*/
 
-Route::redirect('/', 'posts');
+Route::permanentRedirect('/', 'posts');
 
 Route::middleware([
     'auth:sanctum',
