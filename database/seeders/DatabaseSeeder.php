@@ -35,6 +35,11 @@ class DatabaseSeeder extends Seeder
                 'email' => 'henry@mail.com',
             ]);
 
+        Post::factory()
+            ->recycle($henry)
+            ->has(Comment::factory(33))
+            ->create();
+
         /*User::factory(10)
             ->has(Post::factory(20))
             ->create();*/
