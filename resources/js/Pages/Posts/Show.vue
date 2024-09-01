@@ -26,8 +26,7 @@
                             {{ comment.body}}
                         </span>
                         <span class="block pt-1 text-sm text-gray-600">
-<!--                            {{ formattedDate(comment) }} ago by {{ comment.user.name }}-->
-                            by joe blogs
+                            By {{ comment.user.name }} {{ relativeDate(comment.created_at) }} ago
                         </span>
                     </li>
                 </ul>
@@ -43,15 +42,16 @@
 
 <script setup>
 import {computed} from "vue";
+import {Link} from "@inertiajs/vue3";
 import AppLayout from "@/Layouts/AppLayout.vue";
+import {relativeDate} from "@/utilities/date.js";
 import {formatDistance, parseISO} from "date-fns";
 import Container from "@/Components/Container.vue";
-import {Link} from "@inertiajs/vue3";
 import Pagination from "@/Components/Pagination.vue";
 
 const props = defineProps(['post', 'comments']);
 
 console.log(props.comments.meta)
 
-const formattedDate = computed(() => formatDistance(parseISO(props.post.created_at), new Date()));
+const formattedDate = computed(() => relativeDate(props.post.created_at));
 </script>
