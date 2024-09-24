@@ -37,10 +37,8 @@
 
 <script setup>
 import {computed} from "vue";
-import {Link} from "@inertiajs/vue3";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {relativeDate} from "@/utilities/date.js";
-import {formatDistance, parseISO} from "date-fns";
 import Container from "@/Components/Container.vue";
 import Pagination from "@/Components/Pagination.vue";
 import Comment from "@/Components/Comment.vue";
